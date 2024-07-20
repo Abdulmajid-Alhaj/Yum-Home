@@ -1,0 +1,215 @@
+____________________________________________________________
+/_______________________Menu_______________________________/
+
+
+GET  api/yum/menu/food
+return : {id , name , price , image}
+
+GET  api/yum/menu/drink
+return : {id , name , price , image}
+
+GET  api/yum/menu/sweet
+return : {id , name , price , image}
+
+_______________________________________________________________
+/_______________________Details_______________________________/
+
+
+GET  api/yum/menu/:foodId
+return : {name , description , price , image} 
+
+
+GET  api/yum/menu/:sweetId
+return : {name , description , price , image}
+
+
+GET  api/yum/menu/:drinkId
+return : {name , description , price , image}
+
+
+POST  api/yum/:userId/favorite/:foodId
+add to favorites in user model
+
+
+POST  api/yum/:userId/favorite/:sweetId
+add to favorites in user model
+
+
+POST  api/yum/:userId/favorite/:drinkId
+add to favorites in user model
+
+
+DELETE  api/yum/:userId/favorite
+remove all favorites from user model
+
+
+_____________________________________________________________
+/_______________________Basket_______________________________/
+
+
+POST  api/yum/order/:userId
+body : {
+    orderDetails [detailId,type],
+    orderDate,
+    total
+}
+
+
+GET  api/yum/order/:userId
+return : {
+    orderName,
+    orderAmount,
+    total,
+    orderStatus,
+}
+
+
+DELETE  api/yum/order/:orderId
+remove from order model
+
+
+DELETE  api/yum/order
+remove all order
+
+
+_______________________________________________________________
+/_______________________Delivery_______________________________/
+
+
+POST  api/yum/delivery/:orderId
+body : {orderStatus}
+
+
+PUT  api/yum/delivery/:orderId
+body : {orderStatus}
+
+
+GET  api/yum/delivery/:orderId
+return : {username,address,phoneNumber,orderName,orderDetails,total}
+
+
+_______________________________________________________________
+/_______________________Admin_______________________________/
+
+                    -----FOOD CRUD------
+
+POST  api/yum/food
+body : {foodName,price,description,imageUrl}
+
+
+PUT  api/yum/food/:foodId
+body : {foodName,price,description,imageUrl}
+
+
+DELETE  api/yum/food/:foodId
+remove from food model
+
+
+GET  api/yum/food
+return : {foodName,price,description,imageUrl}
+
+
+                    -----SWEET CRUD------
+                    
+POST  api/yum/sweet
+body : {sweetName,price,description,imageUrl}
+
+
+PUT  api/yum/sweet/:sweetId
+body : {sweetName,price,description,imageUrl}
+
+
+DELETE  api/yum/sweet/:sweetId
+remove from sweet model
+
+
+GET  api/yum/sweet
+return : {sweetName,price,description,imageUrl}
+
+
+                    -----DRINK CRUD------
+                    
+POST  api/yum/drink
+body : {drinkName,price,description,imageUrl}
+
+
+PUT  api/yum/drink/:drinkId
+body : {drinkName,price,description,imageUrl}
+
+
+DELETE  api/yum/drink/:drinkId
+remove from drink model
+
+
+GET  api/yum/drink
+return : {drinkName,price,description,imageUrl}
+
+
+                    -----EVERY THING------
+
+GET  api/yum/orders
+return : [
+        {foodName,imageUrl}
+        {sweetName,imageUrl}
+        {drinkName,imageUrl}
+    ]
+
+
+                   --------USERS----------
+
+
+GET  api/yum/admin/users
+return : {name,role}
+
+
+PUT  api/yum/admin/users/:userId
+body: {role}
+
+
+DELETE  api/yum/admin/users/:userId
+remove user 
+
+
+                ------orders-------
+
+
+POST  api/yum/admin/order/:orderId
+body : {orderStatus}
+
+
+PUT  api/yum/admin/order/:orderId
+body : {orderStatus}
+
+
+GET  api/yum/admin/order/:orderId
+return : {username,address,phoneNumber,orderName,orderDetails,total}
+
+
+DELETE  api/yum/admin/order/:orderId
+remove order
+
+
+_______________________________________________________________
+/________________________AUTH_______________________________/
+
+
+POST  api/yum/users/register
+body : {username,email,password,confirmPassword,address,phoneNumber}
+
+
+POST  api/yum/users/login
+body : {email,password}
+
+
+POST  api/yum/users/verify
+body : {email,otp}
+
+
+POST api/yum/users/resend
+body : {email}
+
+
+_______________________________________________________________
+/_______________________Details_______________________________/
+
+

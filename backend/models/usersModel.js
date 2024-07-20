@@ -50,26 +50,20 @@ const userSchema = mongoose.Schema({
     },
     favoriteFood : [
         {
-            foodId : {
-                type : mongoose.Schema.Types.ObjectId,
-                ref : 'Food'
-            }
+            type : mongoose.Schema.Types.ObjectId,
+            ref : 'Food'
         }
     ],
     favoriteSweet : [
         {
-            sweetId : {
-                type : mongoose.Schema.Types.ObjectId,
-                ref : 'Sweet'
-            }
+            type : mongoose.Schema.Types.ObjectId,
+            ref : 'Sweet'
         }
     ],
     favoriteDrink : [
         {
-            drinkId : {
-                type : mongoose.Schema.Types.ObjectId,
-                ref : 'Drink'
-            }
+            type : mongoose.Schema.Types.ObjectId,
+            ref : 'Drink'
         }
     ]
 })
