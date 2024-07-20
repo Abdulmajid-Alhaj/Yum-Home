@@ -50,24 +50,30 @@ const userSchema = mongoose.Schema({
     },
     favoriteFood : [
         {
-            type : mongoose.Schema.Types.ObjectId,
-            ref : 'Food'
+            foodId : {
+                type : mongoose.Schema.Types.ObjectId,
+                ref : 'Food'
+            }
         }
     ],
     favoriteSweet : [
         {
-            type : mongoose.Schema.Types.ObjectId,
-            ref : 'Sweet'
+            sweetId : {
+                type : mongoose.Schema.Types.ObjectId,
+                ref : 'Sweet'
+            }
         }
     ],
     favoriteDrink : [
         {
-            type : mongoose.Schema.Types.ObjectId,
-            ref : 'Drink'
+            drinkId : {
+                type : mongoose.Schema.Types.ObjectId,
+                ref : 'Drink'
+            }
         }
     ]
 })
 
-const User = mongoose.model('User',userSchema)
+const User = mongoose.Model('User',userSchema)
 
 module.exports = User
