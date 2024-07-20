@@ -5,36 +5,28 @@ const orderSchema = mongoose.Schema({
         type : mongoose.Schema.Types.ObjectId,
         ref : 'User'
     },
-    type : [
-    {
-        foodId : {
-            type : mongoose.Schema.Types.ObjectId,
-            ref : 'Food'
+    orderDetails : [
+        {
+            foodId : {
+                type : mongoose.Schema.Types.ObjectId
+            },
+            type : {
+                type : String,
+                enum : ['food','sweet','drink']
+            }
         }
-    },
-    {
-        sweetId :{
-            type : mongoose.Schema.Types.ObjectId,
-            ref : 'Sweet'
-        }
-    },
-    {
-        drinkId : {
-            type : mongoose.Schema.Types.ObjectId,
-            ref : 'Drink'
-        }
-    }],
+    ],
     orderDate : {
         type : Date,
         required : true
     },
     total : {
-        type : String,
+        type : Number,
         required : true
     },
     orderStatus : {
         type : String,
-        enum : ['unCompleted' , 'Completed']
+        enum : ['being prepared', 'being deliveried' , 'recieved']
     }
 })
 

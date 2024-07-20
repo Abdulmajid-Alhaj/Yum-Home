@@ -47,7 +47,25 @@ const userSchema = mongoose.Schema({
     verificationExpires : {
         type : Date,
         required : true
-    }
+    },
+    favoriteFood : [
+        {
+            type : mongoose.Schema.Types.ObjectId,
+            ref : 'Food'
+        }
+    ],
+    favoriteSweet : [
+        {
+            type : mongoose.Schema.Types.ObjectId,
+            ref : 'Sweet'
+        }
+    ],
+    favoriteDrink : [
+        {
+            type : mongoose.Schema.Types.ObjectId,
+            ref : 'Drink'
+        }
+    ]
 })
 
 const User = mongoose.model('User',userSchema)
