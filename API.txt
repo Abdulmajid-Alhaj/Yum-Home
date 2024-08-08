@@ -73,22 +73,6 @@ remove all order
 
 
 _______________________________________________________________
-/_______________________Delivery_______________________________/
-
-
-POST  api/yum/delivery/:orderId
-body : {orderStatus}
-
-
-PUT  api/yum/delivery/:orderId
-body : {orderStatus}
-
-
-GET  api/yum/delivery/:orderId
-return : {username,address,phoneNumber,orderName,orderDetails,total}
-
-
-_______________________________________________________________
 /_______________________Admin_______________________________/
 
                     -----FOOD CRUD------
@@ -188,8 +172,7 @@ return : {username,address,phoneNumber,orderName,orderDetails,total}
 DELETE  api/yum/admin/order/:orderId
 remove order
 
-
-_______________________________________________________________
+_____________________________________________________________
 /________________________AUTH_______________________________/
 
 
@@ -208,6 +191,9 @@ body : {email,otp}
 POST api/yum/users/resend
 body : {email}
 
+
+POST  api/yum/users/logout
+destroy token
 
 _______________________________________________________________
 /_______________________Details_______________________________/
