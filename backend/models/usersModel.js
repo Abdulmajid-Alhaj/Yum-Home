@@ -4,7 +4,7 @@ const userSchema = mongoose.Schema({
     username : {
         type : String,
         required : true,
-        minLength : 3
+        minlength : 3
     },
     email : {
         type : String,
@@ -15,22 +15,19 @@ const userSchema = mongoose.Schema({
         type : String,
         required : true,
         minlength : 8,
-        maxlength : 32
+        maxlength : 150
     },
     confirmPassword : {
         type : String,
         required : true,
         minlength : 8,
-        maxlength : 32
+        maxlength : 150
     },
     phoneNumber : {
         type : String,
-        required : true
+        required : true,
+        minlength : 10
     },
-    city : {
-        type : String,
-        required : true
-    }, 
     address : {
         type : String,
         required : true
@@ -53,7 +50,7 @@ const userSchema = mongoose.Schema({
         type : String,
         required : true
     },
-    verificationExpires : {
+    verificationCodeExpires : {
         type : Date,
         required : true
     },
