@@ -19,6 +19,6 @@ const sweetSchema = mongoose.Schema({
     }
 })
 
-const Sweet = mongoose.Model('Sweet',sweetSchema)
+const Sweet = mongoose.model('Sweet',sweetSchema)
 
 module.exports = Sweet

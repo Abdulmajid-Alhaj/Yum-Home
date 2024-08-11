@@ -89,7 +89,7 @@ DELETE  api/yum/food/:foodId
 remove from food model
 
 
-GET  api/yum/food
+GET  api/yum/food/:foodId
 return : {foodName,price,description,imageUrl}
 
 
@@ -107,7 +107,7 @@ DELETE  api/yum/sweet/:sweetId
 remove from sweet model
 
 
-GET  api/yum/sweet
+GET  api/yum/sweet/:sweetId
 return : {sweetName,price,description,imageUrl}
 
 
@@ -125,7 +125,7 @@ DELETE  api/yum/drink/:drinkId
 remove from drink model
 
 
-GET  api/yum/drink
+GET  api/yum/drink/:drinkId
 return : {drinkName,price,description,imageUrl}
 
 

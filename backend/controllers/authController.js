@@ -13,20 +13,41 @@ const transporter = nodemailer.createTransport({
 
 const signUpUser = async (req , res) => {
     try{
-        const {username,email,password,confirmPassword,phoneNumber,address,city} = req.body;
-        if (password !== confirmPassword) {
-			return res.status(400).json({msg: "Passwords don't match" });
-		}
-        const emailUser = await User.findOne({email})
+        const {username,email,password,confirmPassword,phoneNumber,address} = req.body;
         
+        for(let i = 0; i < username.length; i++){
+            if(username.toLowerCase().charCodeAt(i) < 97 || username.toLowerCase().charCodeAt(i) > 123){
+                return res.status(400).json({msg: "Invalid username"})
+            }
+        }
+
+        if(username.length < 3){
+            return res.status(400).json({msg: "Username should be at least 3 characters long"})
+        }
+
+        const emailUser = await User.findOne({email})
+
         if(emailUser) {
             return res.status(400).json({msg: "User already exists"})
         }
 
-        if (username === ""){
-            return res.status(400).json({msg: "Please enter a username"})
+        if (password !== confirmPassword) {
+			return res.status(400).json({msg: "Passwords don't match" });
+		}
+
+        if(password.length < 8){
+            return res.status(400).json({msg: "Password should be at least 8 characters long"})
         }
         
+        if(phoneNumber.length < 10){
+            return res.status(400).json({msg: "Phone number should be at least 10 characters long"})
+        }
+
+        for(let i = 0; i < phoneNumber.length; i++) {
+            if(phoneNumber.charCodeAt(i) < 48 || phoneNumber.charCodeAt(i) > 57){
+                return res.status(400).json({msg: "Invalid phone number"})
+            }
+        }
 
         const hashPassword = await bcryptjs.hash(password,10)
         
@@ -38,25 +59,13 @@ const signUpUser = async (req , res) => {
         const otp = `${otp1}${otp2}${otp3}${otp4}`
         const verificationCodeExpires = new Date(Date.now() + 10 * 60 * 1000)
 
-        const newUser = new User ({
-            username,
-            email,
-            password : hashPassword,
-            confirmPassword : hashPassword,
-            phoneNumber,
-            address,
-            city,
-            otp,
-            verificationCodeExpires
-        })
-
         const mailOptions = {
             from: process.env.EMAIL_USER,
             to: email,
             subject: 'Your OTP Code',
             text: `Your OTP Code is ${otp}`,
         };
-
+        
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
                 console.log('Error sending email: ' + error.message);
@@ -65,6 +74,16 @@ const signUpUser = async (req , res) => {
             }
         });
 
+        const newUser = new User ({
+            username,
+            email,
+            password : hashPassword,
+            confirmPassword : hashPassword,
+            phoneNumber,
+            address,
+            otp,
+            verificationCodeExpires
+        })
 
         if(newUser){
             await newUser.save();
@@ -90,13 +109,13 @@ const loginUser = async (req , res) => {
         const isPasswordCorrect = await bcryptjs.compare(password, user.password || "")
         
         if(!isPasswordCorrect){
-            return res.status(404).json({msg : "Invalid email or password"})
+            return res.status(404).json({msg: "Invalid email or password"})
         }
 
         const isVerified = user.isVerified
 
         if(!isVerified){
-            return res.status(404).json({msg : "Please verify your email"})
+            return res.status(404).json({msg: "Please verify your email"})
         }
         generateTokenAndSetCookie(user._id , res);
 
@@ -125,6 +144,7 @@ const verifyEmail = async (req,res) => {
         }
 
         user.isVerified = true
+        
         generateTokenAndSetCookie(user._id, res)
 
         await user.save()
@@ -144,7 +164,7 @@ const resendOtp = async (req,res) => {
         const {email} = req.body
         const user = await User.findOne({email})
         if(!user){
-            return res.status(404).json({msg : "User not found"})
+            return res.status(404).json({msg: "User not found"})
         }
 
         const otp1 = Math.floor(Math.random()*10)
@@ -185,62 +205,12 @@ const resendOtp = async (req,res) => {
 const logOutUser = async (req , res) => {
     try{
         res.cookie("jwt","",{maxAge:0})
-        res.status(200).json({msg : "User logged out"})
+        res.status(200).json({msg: "User logged out"})
     }
     catch(err){
         res.status(500).json({msg: "Error in server"});
     }
 }
-
-//create company controller
-const createCompany = async (req,res) => {
-    try{
-        const {
-            ownerName,
-            companyName,
-            logo,
-            country,
-            cityOfHQ,
-            phoneNumber,
-            sizeOfEmployment,
-            description
-        } = req.body;
-
-        const  ownerId  = req.user._id
-
-        const companyNameExist = await Company.findOne({companyName})
-        
-        
-        if(companyNameExist){
-            return res.status(400).json({msg: 'Company already exists'})
-        }
-        
-        const newCompany = new Company({
-            ownerId,
-            ownerName,
-            companyName,
-            logo,
-            country,
-            cityOfHQ,
-            phoneNumber,
-            sizeOfEmployment,
-            description
-        })
-        
-        if(newCompany){
-            await newCompany.save()
-            res.status(201).json({msg: 'Company created successfully',id:newCompany._id})
-        }else{
-            res.status(400).json({msg: 'Invalid company'})
-        }
-    }
-    catch(err) {
-        res.status(500).json({msg: err.message})
-    }
-}
-
-
-
 
 module.exports = { 
     signUpUser,
@@ -248,5 +218,4 @@ module.exports = {
     logOutUser,
     verifyEmail,
     resendOtp,
-    createCompany
 }
