@@ -19,6 +19,6 @@ const drinkSchema = mongoose.Schema({
     }
 })
 
-const Drink = mongoose.Model('Drink',drinkSchema)
+const Drink = mongoose.model('Drink',drinkSchema)
 
 module.exports = Drink
