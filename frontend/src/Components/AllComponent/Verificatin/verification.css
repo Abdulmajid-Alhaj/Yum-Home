@@ -1,0 +1,44 @@
+.btnverify {
+    padding: 0.9em 2em;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #F1543F;
+    background-color: rgb(255, 171, 45);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    margin-right:20px ;
+    }
+    
+    .btnverify:hover {
+    background-color: #F1543F;
+    box-shadow: 0px 15px 20px #a13d30;
+    color: #FFAB2D;
+    transform: translateY(-7px);
+    }
+    
+    .btnverify:active {
+    transform: translateY(-1px);
+    }
+    @media (max-width: 768px) {
+        .btnverify {
+            padding: 0.8em 1.2em;
+            font-size: 11px;
+            letter-spacing: 2px;
+            font-weight: 400;
+        }
+      }
+      @media (max-width: 640px) {
+        .btnverify {
+            padding: 0.6em 1em;
+            font-size: 10px;
+            letter-spacing: 1.2px;
+            font-weight: 350;
+        }
+      }

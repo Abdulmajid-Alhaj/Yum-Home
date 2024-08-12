@@ -1,4 +1,4 @@
-.container{
+.containerform{
     background-image: url('../../../public/images/zero-take-ayk9eTUk8K4-unsplash\ \(1\)\ 1.png');
     background-repeat: no-repeat;
     background-size: cover;
@@ -17,7 +17,7 @@
     border-radius: 15px;
 }
 input{
-    border: 2px solid rgba(255, 171, 45 ,0.2);
+    border: 2px solid #ffab2d33;
     background-color: rgba(255, 255, 255, 0.05);
     height: 50px;
     padding-left: 10px;
@@ -41,7 +41,7 @@ input:focus {
     justify-content: center;
     align-items: center;
 }
-h1{
+.title-register{
     font-size: 40px;
     color: white;
     font-weight: bold;
@@ -53,12 +53,12 @@ h1{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-/* @media (max-width: 768px){
-    h1 {
+@media (max-width: 768px){
+    .title-register {
         font-size: 30px;
     }
-} */
-button {
+}
+.btn {
     padding: 0.9em 3em;
     font-size: 16px;
     font-weight: bold;
@@ -78,31 +78,22 @@ button {
     margin-top: 15px;
   }
   
-  button:hover {
+  .btn:hover {
     background-color: #F1543F;
     box-shadow: 0px 15px 20px #a13d30;
     color: #FFAB2D;
     transform: translateY(-7px);
   }
   
-  button:active {
+  .btn:active {
     transform: translateY(-1px);
   }
 
-  /* @media (min-width: 768px) {
-    button {
+  @media (max-width: 768px) {
+    .btn {
         padding: 0.6rem 2rem;
         font-size: 14px;
         letter-spacing: 2px;
         font-weight: 400;
     }
   }
-  @media (min-width: 640) {
-    button {
-        padding: 0.4rem 1rem;
-        font-size: 12px;
-        letter-spacing: 1px;
-        font-weight: 300;
-    }
-  }
-   */

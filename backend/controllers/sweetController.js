@@ -1,6 +1,6 @@
 const Sweet = require('../models/sweetModel')
 
-exports.createSweet = async (req, res) => {
+const createSweet = async (req, res) => {
     try {
       const { sweetName, price, description, imageUrl } = req.body;
       const existSweet = await Sweet.findOne({ sweetName });
@@ -20,7 +20,7 @@ exports.createSweet = async (req, res) => {
   };
 
 
-  exports.getSweet = async (req, res) => {
+  const getSweet = async (req, res) => {
     try {
       const SweetId = req.params.sweetNameId;
       const sweet = await Sweet.findById(sweetId);
@@ -36,7 +36,7 @@ exports.createSweet = async (req, res) => {
   };
 
 
-  exports.updateSweet = async (req, res) => {
+  const updateSweet = async (req, res) => {
     try {
       const sweetId = req.params.foodId;
       const { sweetName, price, description, imageUrl } = req.body;
@@ -50,8 +50,9 @@ exports.createSweet = async (req, res) => {
     console.error(err);
     res.status(400).json({ msg: 'Error update sweet' });
 }
+  }
 
-exports.deleteSweet = async (req, res) => {
+const deleteSweet = async (req, res) => {
     try{
         const sweetId = req.params.sweetId;
         await Sweet.findByIdAndRemove(sweetId);
@@ -62,9 +63,7 @@ exports.deleteSweet = async (req, res) => {
     }
 }
 
-  };
-
-exports.getAllSweets = async (req, res) => {
+const getAllSweets = async (req, res) => {
   try {
     const sweets = await Sweet.find();
     if(!sweets){
@@ -76,3 +75,11 @@ exports.getAllSweets = async (req, res) => {
     res.status(500).json({ msg: 'Error get sweet' });
   }
 };
+
+module.exports = {
+  getAllSweets,
+  createSweet,
+  getSweet,
+  updateSweet,
+  deleteSweet,
+}

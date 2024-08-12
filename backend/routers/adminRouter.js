@@ -1,27 +1,27 @@
 const express = require('express');
 const router = express.Router();
-const foodController = require('./food.controller');
-const drinkController = require('./drink.controller');
-const sweetController = require('./sweet.controller');
+const foodController = require('../controllers/foodController');
+const drinkController = require('../controllers/drinkController');
+const sweetController = require('../controllers/sweetController');
 
 
-router.post('/api/yum/food', foodController.createFood);
-router.get('/api/yum/food', foodController.getAllFoods);
-router.get('/api/yum/food/:foodId', foodController.getFood);
-router.put('/api/yum/food/:foodId', foodController.updateFood);
-router.delete('/api/yum/food/:foodId', foodController.deleteFood);
+router.post('/food', foodController.createFood);
+router.get('/food', foodController.getAllFoods);
+router.get('/food/:foodId', foodController.getFood);
+router.put('/food/:foodId', foodController.updateFood);
+router.delete('/food/:foodId', foodController.deleteFood);
 
-router.post('/api/yum/drink', drinkController.createDrink);
-router.get('/api/yum/drink',drinkController.getAllDrinks);
-router.get('/api/yum/drink/:drinkId', drinkController.getDrink);
-router.put('/api/yum/drink/:drinkId', drinkController.updateDrink);
-router.delete('/api/yum/drink/:drinkId', drinkController.deleteDrink);
+router.post('/drink', drinkController.createDrink);
+router.get('/drink',drinkController.getAllDrinks);
+router.get('/drink/:drinkId', drinkController.getDrink);
+router.put('/drink/:drinkId', drinkController.updateDrink);
+router.delete('/drink/:drinkId', drinkController.deleteDrink);
 
-router.post('/api/yum/sweet', sweetController.createSweet);
-router.get('/api/yum/sweet',sweetController.getAllSweets);
-router.get('/api/yum/sweet/:sweetId', sweetController.getSweet);
-router.put('/api/yum/sweet/:sweetId', sweetController.updateSweet);
-router.delete('/api/yum/sweet/:sweetId', sweetController.deleteSweet);
+router.post('/sweet', sweetController.createSweet);
+router.get('/sweet',sweetController.getAllSweets);
+router.get('/sweet/:sweetId', sweetController.getSweet);
+router.put('/sweet/:sweetId', sweetController.updateSweet);
+router.delete('/sweet/:sweetId', sweetController.deleteSweet);
 
 
 module.exports = router;

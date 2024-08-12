@@ -1,6 +1,6 @@
-const Food = require('../models/foodModel')
+const Food = require('../models/foodModel');
 
-exports.createFood = async (req, res) => {
+const createFood = async (req, res) => {
     try {
       const { foodName, price, description, imageUrl } = req.body;
       const existFood = await Food.findOne({ foodName });
@@ -20,7 +20,7 @@ exports.createFood = async (req, res) => {
   };
 
 
-  exports.getFood = async (req, res) => {
+  const getFood = async (req, res) => {
     try {
       const foodId = req.params.foodId;
       const food = await Food.findById(foodId);
@@ -36,7 +36,7 @@ exports.createFood = async (req, res) => {
   };
 
 
-  exports.updateFood = async (req, res) => {
+  const updateFood = async (req, res) => {
     try {
       const foodId = req.params.foodId;
       const { foodName, price, description, imageUrl } = req.body;
@@ -50,8 +50,9 @@ exports.createFood = async (req, res) => {
     console.error(err);
     res.status(400).json({ msg: 'Error update food' });
 }
+  }
 
-exports.deleteFood = async (req, res) => {
+const deleteFood = async (req, res) => {
     try{
         const foodId = req.params.foodId;
         await Food.findByIdAndRemove(foodId);
@@ -62,9 +63,7 @@ exports.deleteFood = async (req, res) => {
     }
 }
 
-  };
-
-exports.getAllFoods = async (req, res) => {
+const getAllFoods = async (req, res) => {
   try {
     const foods = await Food.find();
     if(!foods){
@@ -76,3 +75,11 @@ exports.getAllFoods = async (req, res) => {
     res.status(500).json({ msg: 'Error get food' });
   }
 };
+
+module.exports = {
+  getAllFoods,
+  getFood,
+  createFood,
+  updateFood,
+  deleteFood
+}
