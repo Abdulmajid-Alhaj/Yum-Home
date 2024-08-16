@@ -47,7 +47,7 @@ _____________________________________________________________
 /_______________________Basket_______________________________/
 
 
-POST  api/yum/order/:userId
+POST  api/yum/order/:userId/:itemId
 body : {
     orderDetails [detailId,type],
     orderDate,
