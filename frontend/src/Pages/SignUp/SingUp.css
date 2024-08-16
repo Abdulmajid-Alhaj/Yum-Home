@@ -1,0 +1,111 @@
+.containerform{
+    background-image: url('../../../public/images/zero-take-ayk9eTUk8K4-unsplash\ \(1\)\ 1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: blur(50px);
+    border-radius: 15px;
+    border:2px solid #FFAB2D;
+}
+.overlay{
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    backdrop-filter: blur(6px);
+    height: 100vh;
+    border-radius: 15px;
+}
+input{
+    border: 2px solid rgba(255, 171, 45 ,0.2);
+    background-color: rgba(255, 255, 255, 0.05);
+    height: 50px;
+    padding-left: 10px;
+    border-radius: 15px;
+    color: #FFAB2D;
+}
+input::placeholder{
+    color: rgba(255, 171, 45 , 0.5);
+}
+
+ input:focus {
+    border-color: #FFAB2D;
+    outline: none;
+}
+@media (max-width: 768px){
+    input::placeholder{
+        font-size: 14px;
+    }
+}
+
+.formaya{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.title-register{
+    font-size: 40px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 25px;
+    background-image: url('../../../public/images/download.jfif');
+    opacity: 80%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+@media (max-width: 768px){
+    .title-register {
+        font-size: 30px;
+    }
+}
+
+.btn {
+    padding: 0.9em 3em;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #F1543F;
+    background-color: rgb(255, 171, 45);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 15px;
+  }
+  
+  .btn:hover {
+    background-color: #F1543F;
+    box-shadow: 0px 15px 20px #a13d30;
+    color: #FFAB2D;
+    transform: translateY(-7px);
+  }
+  
+  .btn:active {
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 768px) {
+    .btn {
+        padding: 0.6em 2em;
+        font-size: 14px;
+        letter-spacing: 2px;
+        font-weight: 400;
+    }
+  }
+  @media (max-width: 640px) {
+    .btn {
+        padding: 0.5em 1.6em;
+        font-size: 12px;
+        letter-spacing: 1.8px;
+        font-weight: 400;
+    }
+  }
+  
